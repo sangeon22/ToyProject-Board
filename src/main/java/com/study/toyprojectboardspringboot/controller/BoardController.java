@@ -22,9 +22,12 @@ public class BoardController {
     }
 
     @PostMapping("/board/writepro")
-    public String boardWritePro(Board board){
+    public String boardWritePro(Board board, Model model){
         boardService.write(board);
-        return "";
+        model.addAttribute("message", "글 작성이 완료되었습니다.");
+        model.addAttribute("searchUrl", "/board/list");
+
+        return "message";
     }
 
     @GetMapping("/board/list")
@@ -53,7 +56,6 @@ public class BoardController {
                               Model model) {
 
         model.addAttribute("board", boardService.boardView(id));
-
         return "boardmodify";
     }
 
@@ -63,7 +65,7 @@ public class BoardController {
     // 변경감지(Dirty Checking) 기능을 써서 수정하는 방식으로도 구현
     // JPA 변경감지, JPA merge, JPA persist
     @PostMapping("/board/update/{id}")
-    public String boardUpdate(@PathVariable("id") Integer id, Board board){
+    public String boardUpdate(@PathVariable("id") Integer id, Board board, Model model){
         // 기존의 내용을 가져와서
         Board boardTemp = boardService.boardView(id);
 
@@ -72,8 +74,9 @@ public class BoardController {
         boardTemp.setContent(board.getContent());
 
         boardService.write(boardTemp);
-
-        return "redirect:/board/list";
+        model.addAttribute("message", "글 수정이 완료되었습니다.");
+        model.addAttribute("searchUrl", "/board/list");
+        return "message";
 
     }
 }
