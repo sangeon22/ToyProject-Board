@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 public class BoardController {
@@ -22,8 +24,8 @@ public class BoardController {
     }
 
     @PostMapping("/board/writepro")
-    public String boardWritePro(Board board, Model model){
-        boardService.write(board);
+    public String boardWritePro(Board board, Model model, MultipartFile file) throws IOException {
+        boardService.write(board, file);
         model.addAttribute("message", "글 작성이 완료되었습니다.");
         model.addAttribute("searchUrl", "/board/list");
 
@@ -65,7 +67,7 @@ public class BoardController {
     // 변경감지(Dirty Checking) 기능을 써서 수정하는 방식으로도 구현
     // JPA 변경감지, JPA merge, JPA persist
     @PostMapping("/board/update/{id}")
-    public String boardUpdate(@PathVariable("id") Integer id, Board board, Model model){
+    public String boardUpdate(@PathVariable("id") Integer id, Board board, Model model, MultipartFile file) throws IOException {
         // 기존의 내용을 가져와서
         Board boardTemp = boardService.boardView(id);
 
@@ -73,10 +75,11 @@ public class BoardController {
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
 
-        boardService.write(boardTemp);
+        boardService.write(boardTemp, file);
         model.addAttribute("message", "글 수정이 완료되었습니다.");
         model.addAttribute("searchUrl", "/board/list");
         return "message";
-
     }
+
+
 }

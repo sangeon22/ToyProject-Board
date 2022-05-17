@@ -9,6 +9,9 @@
 <body>
     <h1 th:text="${board.title}">제목입니다.</h1>
     <p th:text="${board.content}">내용이 들어갈 부분입니다.</p>
+    <a th:href="@{${board.filepath}}">업로드된 이미지 보기</a>
+    <br>
+    <br>
     <button><a th:href="@{/board/delete(id=${board.id})}">삭제</a></button>
     <button><a th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a></button>
 </body>

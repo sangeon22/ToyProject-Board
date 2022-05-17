@@ -4,8 +4,12 @@ import com.study.toyprojectboardspringboot.entity.Board;
 import com.study.toyprojectboardspringboot.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BoardService {
@@ -13,8 +17,21 @@ public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
 
-    // 게시글 작성 처리
-    public void write(Board board){
+    // 게시글 작성 처리 및 파일 업로드
+    public void write(Board board, MultipartFile file) throws IOException {
+
+        // 업로드 파일 저장 경로
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+
+        // 식별자 파일 랜덤 Name 생성
+        UUID uuid = UUID.randomUUID();
+        String fileName = uuid + "_" + file.getOriginalFilename();
+
+        File saveFile = new File(projectPath, fileName);
+        file.transferTo(saveFile);
+
+        board.setFilename(fileName);
+        board.setFilepath("/files/" + fileName);
         boardRepository.save(board);
     }
 
