@@ -49,7 +49,31 @@ public class BoardController {
     }
 
     @GetMapping("/board/modify/{id}")
-    public String boardModify(@PathVariable("id") Integer id){
-        return  "boardmodify";
+    public String boardModify(@PathVariable("id") Integer id,
+                              Model model) {
+
+        model.addAttribute("board", boardService.boardView(id));
+
+        return "boardmodify";
+    }
+
+
+
+    // JPA에서는 수정할 때, 이렇게 덮어씌우는 방식을 하면 X
+    // 변경감지(Dirty Checking) 기능을 써서 수정하는 방식으로도 구현
+    // JPA 변경감지, JPA merge, JPA persist
+    @PostMapping("/board/update/{id}")
+    public String boardUpdate(@PathVariable("id") Integer id, Board board){
+        // 기존의 내용을 가져와서
+        Board boardTemp = boardService.boardView(id);
+
+        // 새로운 내용을 덮어씌운다.
+        boardTemp.setTitle(board.getTitle());
+        boardTemp.setContent(board.getContent());
+
+        boardService.write(boardTemp);
+
+        return "redirect:/board/list";
+
     }
 }
