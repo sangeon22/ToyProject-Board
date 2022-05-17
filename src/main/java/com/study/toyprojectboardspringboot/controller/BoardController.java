@@ -3,6 +3,9 @@ package com.study.toyprojectboardspringboot.controller;
 import com.study.toyprojectboardspringboot.entity.Board;
 import com.study.toyprojectboardspringboot.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +36,10 @@ public class BoardController {
     }
 
     @GetMapping("/board/list")
-    public String boardlist(Model model){
+    public String boardlist(Model model,
+                            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
 
-        model.addAttribute("list", boardService.boardList());
+        model.addAttribute("list", boardService.boardList(pageable));
 
         return "boardlist";
     }
