@@ -5,8 +5,22 @@
     <title>게시글 상세 페이지</title>
 </head>
 
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+
+    }
+</style>
+
+<style type="text/css">
+    form{display:inline}
+</style>
+
 
 <body>
+    <div class="layout">
     <h1 th:text="${board.title}">제목입니다.</h1>
     <p th:text="${board.content}">내용이 들어갈 부분입니다.</p>
     <p>
@@ -17,8 +31,14 @@
     <a th:href="@{${board.filepath}}">파일 다운</a>
     <br>
     <br>
+    <div align="right" >
     <button><a th:href="@{/board/delete(id=${board.id})}">삭제</a></button>
     <button><a th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a></button>
+    <form th:action="@{/board/list}" method="get">
+        <button type="submit">게시글 리스트</button>
+    </form>
+    </div>
+    </div>
 </body>
 
 </html>
