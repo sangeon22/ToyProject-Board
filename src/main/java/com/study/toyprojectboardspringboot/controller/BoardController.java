@@ -3,6 +3,7 @@ package com.study.toyprojectboardspringboot.controller;
 import com.study.toyprojectboardspringboot.entity.Board;
 import com.study.toyprojectboardspringboot.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -22,7 +23,7 @@ public class BoardController {
     private BoardService boardService;
 
     @GetMapping("/board/write")
-    public String boardWriteForm(){
+    public String boardWriteForm() {
         return "boardWrite";
     }
 
@@ -37,9 +38,18 @@ public class BoardController {
 
     @GetMapping("/board/list")
     public String boardlist(Model model,
-                            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+                            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-        model.addAttribute("list", boardService.boardList(pageable));
+        Page<Board> list = boardService.boardList(pageable);
+
+        int nowPage = list.getPageable().getPageNumber() + 1;
+        int startPage = Math.max(nowPage - 4, 1);
+        int endPage = Math.min(nowPage + 5, list.getTotalPages());
+
+        model.addAttribute("list", list);
+        model.addAttribute("nowPage", nowPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
 
         return "boardlist";
     }
@@ -52,7 +62,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/delete")
-    public String boardDelete(Integer id){
+    public String boardDelete(Integer id) {
         boardService.boardDelete(id);
         return "redirect:/board/list";
     }
@@ -64,7 +74,6 @@ public class BoardController {
         model.addAttribute("board", boardService.boardView(id));
         return "boardmodify";
     }
-
 
 
     // JPA에서는 수정할 때, 이렇게 덮어씌우는 방식을 하면 X
