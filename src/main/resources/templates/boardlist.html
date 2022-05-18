@@ -10,7 +10,12 @@
         width: 500px;
         margin: 0 auto;
         margin-top: 40px;
+
     }
+</style>
+
+<style type="text/css">
+    form{display:inline}
 </style>
 
 <body>
@@ -28,17 +33,30 @@
                 <tr th:each="board : ${list}">
                     <td th:text="${board.id}">1</td>
                     <td>
-                        <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>>
+                        <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                     </td>
                  </tr>
             </tbody>
         </table>
         <hr>
-        <br>
-        <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}">
-            <a th:if="${page != nowPage}" th:href="@{/board/list(page= ${page -1})}" th:text="${page}"></a>
+
+        <th:block th:each="page : ${#numbers.sequence(startPage,endPage)}" float:left>
+            <a th:if="${page != nowPage}" th:href="@{/board/list(page= ${page -1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
             <strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
         </th:block>
+
+
+        <div align="right" >
+        <form th:action="@{/board/list}" method="get">
+            <br>
+            <input type="text" name="searchKeyword">
+            <button type="submit">검색</button>
+        </form>
+
+        <form th:action="@{/board/write}" method="get">
+            <button type="submit">글 작성</button>
+        </form>
+        </div>
 
     </div>
 
