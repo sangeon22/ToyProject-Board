@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>게시물 작성폼</title>
@@ -25,14 +25,23 @@
 
 </style>
 
+<style type="text/css">
+    form{display:inline}
+</style>
+
 <body>
 <div class="layout">
     <form action="/board/writepro" method="post" enctype="multipart/form-data">
         <input name="title" type="text">
         <textarea name="content"></textarea>
         <input name="file" type="file" >
-        <button type="submit">작성</button>
+        <button type="submit" style="background-color: #59d2a8">작성</button>
     </form>
+    <div align="right" >
+        <form th:action="@{/board/list}" method="get">
+            <button type="submit" style="background-color: #59d2a8">이전</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>
