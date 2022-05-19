@@ -1,5 +1,5 @@
 # ToyProject-Board-SpringBoot
-Springboot를 이용한  게시판
+Springboot+mariaDB를 이용한 게시판 구현
  <br/>
  <br/>
 
