@@ -1,6 +1,6 @@
 # ToyProject-Board-SpringBoot
 Springboot를 이용한  게시판
-<p></p>
+ <br/>
 
 ## 개발환경
 - IDE(통합개발환경) : IntelliJ Ultimate Edition
@@ -27,25 +27,30 @@ Springboot를 이용한  게시판
 
  <br/>
 - MariaDB
+
 ![DB](https://user-images.githubusercontent.com/86394597/169237530-f95889a8-bc49-42e7-8c6d-b88bee6036da.JPG)
 
  <br/>
 ### 2. 게시글 작성 처리
 - 파일 선택 버튼 클릭 시, 파일 업로드 가능 (파일 업로드 기능)
+
 ![게시글 작성폼](https://user-images.githubusercontent.com/86394597/169237079-c9c293d3-efea-4971-af11-b641d71d17fe.JPG)
 
  <br/>
 - 등록하기 버튼 클릭 시, 등록완료 알림창을 띄운 후 게시글 리스트 페이지로 이동
+
 ![글작성완료 알림창](https://user-images.githubusercontent.com/86394597/169237815-8b59ea16-f391-46df-a14e-790aae26294d.JPG)
 
  <br/>
 - 목록으로 버튼 클릭 시, 게시글 리스트 페이지로 이동
+
 ![게시글 작성 후 리스트](https://user-images.githubusercontent.com/86394597/169237718-02364ec2-edda-4bfc-901a-d5a358f89325.JPG)
 
 
  <br/>
 ### 3. 게시글 상세페이지 처리
 - 업로드된 파일 띄우기
+
 ![게시글 작성 후 상세페이지](https://user-images.githubusercontent.com/86394597/169237906-1d703923-c8b8-4c45-a7e2-1d1f4fe600f5.JPG)
 
  <br/>
@@ -57,6 +62,7 @@ Springboot를 이용한  게시판
  <br/>
 ### 4. 게시글 수정 처리
 - 수정 버튼을 클릭하여 수정폼에 들어오면, 원문 게시글의 내용을 미리 수정폼에 위치시켜둔다.
+
 ![게시글 수정폼](https://user-images.githubusercontent.com/86394597/169238047-374aff70-df84-4ea4-bc2f-5ed595f495fa.JPG)
 
  <br/>
@@ -64,15 +70,22 @@ Springboot를 이용한  게시판
 - 이전으로 버튼 클릭 시, 원문 게시글 상세페이지로 이동
  <br/>
 - 수정하기 버튼 클릭 시, 수정완료 알림창을 띄운 후 게시글 리스트 페이지로 이동 (게시글 수정메세지 기능)
+
 ![게시글 수정완료 알림창](https://user-images.githubusercontent.com/86394597/169238151-e4d55345-dd73-4633-87ec-c61ba5e5be3a.JPG)
+ <br/>
+ 
 ![게시글 수정 후 리스트](https://user-images.githubusercontent.com/86394597/169238184-b2f69735-fa63-4181-a4e9-11b8aee30c5c.JPG)
+ <br/>
+ 
 ![게시글 수정 후 상세페이지](https://user-images.githubusercontent.com/86394597/169238114-fcd14000-2fb3-43e5-bcb1-d14b95a8c829.JPG)
 
 
  <br/>
 ### 5. 게시글 삭제 처리
 - 삭제하기 버튼 클릭 시, 삭제완료 알림창을 띄운 후 게시글 리스트 페이지로 이동 (게시글 삭제메세지 기능)
+
 ![게시글 삭제 알림창](https://user-images.githubusercontent.com/86394597/169237951-6743dd38-73a0-4a54-9c1e-cf7badbca1f4.JPG)
  <br/>
+ 
 ### 6. 리스트 목록 이동, 이전, 수정하기 등 페이지 이동처리
 
