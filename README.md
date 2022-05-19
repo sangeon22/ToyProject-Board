@@ -17,8 +17,7 @@ Springboot를 이용한  게시판
 ### 1. 게시글 리스트 리스팅 처리
 - DB에 등록된 게시글을 최신순서로 정렬
 ![게시판 리스트](https://user-images.githubusercontent.com/86394597/169237504-57af05e5-8603-4550-ab41-e33b2bd20362.JPG)
-&nbsp;
-&nbsp;
+<p></p>
 
 - 아래 페이징처리된 버튼을 통해 분할처리된 페이지들에 등록된 게시글을 확인 가능, 현재 페이지는 red색 표기(게시글 리스트 페이징처리 기능)
 ![Inked게시판 리스트 페이징처리_LI](https://user-images.githubusercontent.com/86394597/169237522-54ef174c-5f16-4b65-9528-5b645837f48c.jpg)
