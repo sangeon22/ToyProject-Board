@@ -10,7 +10,8 @@ Springboot를 이용한  게시판
 - DB 접근 기술(ORM) : JPA
 - View 템플릿 : Thymeleaf
 
-
+&nbsp;
+&nbsp;
 
 ## 기능
 ### 1. 게시글 리스트 리스팅 처리
