@@ -8,7 +8,7 @@ Springboot+mariaDB를 이용한 게시판 구현
 - 개발 언어 : Java 11.0.9
 - 프레임워크 : Spring Boot 2.6.7
 - 빌드 : Gradle
-- DB(데이터베이스) : MariaDB 10.5
+- DB(데이터베이스) : MariaDB 10.6.7
 - DB 접근 기술(ORM) : JPA
 - View 템플릿 : Thymeleaf
  <br/>
